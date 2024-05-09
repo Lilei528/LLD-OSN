@@ -6,7 +6,7 @@ This is the source code for our paper **LLD-OSN: An effective method for text cl
 
 ## The overall framework
 
-![Fig2](./fig2.png)
+![Fig2](./Fig2.png)
 
 ## Installation
 
