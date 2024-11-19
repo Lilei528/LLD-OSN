@@ -123,19 +123,19 @@ The proposed method is compared with existing noise learning methods, including 
 
 The results compared with the baseline model are as follows:
 
-![](.\Figure2.png)
+![](/Figure2.png)
 
-![Figure3](.\Figure3.png)
+![Figure3](/Figure3.png)
 
 
 
 The sensitivity of the hyperparameters is as follows:
 
-![](.\Fig3(a).png)
+![](/Fig3(a).png)
 
-![Fig3(b)](.\Fig3(b).png)
+![Fig3(b)](/Fig3(b).png)
 
 The impact of confidence is as follows:
 
-![](.\Figure4.png)
+![](/Figure4.png)
 
