@@ -14,7 +14,7 @@
 
 ## The overall framework
 
-> ![Figure1](.\Figure1.png)
+> ![Figure1](/Figure1.png)
 >
 
 ## The Used Datasets
