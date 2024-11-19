@@ -14,7 +14,7 @@
 
 ## The overall framework
 
-> ![Figure1](E:\Data\github\LLD-OSN\Figure1.png)
+> ![Figure1](.\Figure1.png)
 >
 
 ## The Used Datasets
@@ -123,19 +123,19 @@ The proposed method is compared with existing noise learning methods, including 
 
 The results compared with the baseline model are as follows:
 
-![](E:\Data\github\LLD-OSN\Figure2.png)
+![](.\Figure2.png)
 
-![Figure3](E:\Data\github\LLD-OSN\Figure3.png)
+![Figure3](.\Figure3.png)
 
 
 
 The sensitivity of the hyperparameters is as follows:
 
-![](E:\Data\github\LLD-OSN\Fig3(a).png)
+![](.\Fig3(a).png)
 
-![Fig3(b)](E:\Data\github\LLD-OSN\Fig3(b).png)
+![Fig3(b)](.\Fig3(b).png)
 
 The impact of confidence is as follows:
 
-![](E:\Data\github\LLD-OSN\Figure4.png)
+![](.\Figure4.png)
 
