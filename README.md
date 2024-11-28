@@ -106,7 +106,7 @@ The proposed method is compared with existing noise learning methods, including 
 
    ​        -- 20newsgroup.cfg
 
-3. Run the baseline model. You can find the paper and repository address for the baseline model through the link provided above. We have provided simple implementations of some methods. `train_bert.py` is the implementation for the BERT model, and `train_coteaching.py` is the implementation for co-teaching.
+3. Run the baseline model. You can find the paper and repository address for the baseline model through the link provided above. We have provided simple implementations of some methods. `train_bert.py` is the implementation for the BERT model.
 
 4. Run our proposed method. `train.py` contains the specific implementation of our proposed method. Use the config file and dataset directory as input parameters for execution. Some parameters in this file need to be set.Test 
 

@@ -30,12 +30,7 @@ from utils.loss import cross_entropy, entropy_loss, regression_loss, BCEFocalLos
 from PIL import ImageFile
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-'''
-load_dataset 数据集进行了切片
-transformer层一般为12层
-优化器的选择
-acc函数没写
-'''
+
 
 class CLDataTransform(object):
     def __init__(self, transform):
@@ -385,35 +380,23 @@ def main(cfg, device):
                     first_loss_ood2=BCEFocalLoss(prob_ood2, ood_y2.to(0))
                     # 类别分类头扁平化
 
-                    if pred_ood_index1.size(0)!=0:
-                        prob_class_ood2 = output2['prob'][pred_ood_index1]
-                        ood_y_d2 = y_d2[pred_ood_index1]
-                        ood_flat_d2= flat_label( ood_y_d2,prob_noisy_ood2,cfg.delta )
-                        sec_loss_ood2 = kl_div(ood_flat_d2, F.softmax(prob_class_ood2)).mean()
 
-                    if pred_ood_index2.size(0) != 0:
-                        prob_class_ood1 = output1['prob'][pred_ood_index2]
-                        ood_y_d1 = y_d1[pred_ood_index2]
-                        ood_flat_d1= flat_label( ood_y_d1,prob_noisy_ood1,cfg.delta )
-                        sec_loss_ood1 = kl_div(ood_flat_d1, F.softmax(prob_class_ood1)).mean()
+                    prob_class_ood2 = output2['prob'][pred_ood_index1]
+                    ood_y_d2 = y_d2[pred_ood_index1]
+                    ood_flat_d2= flat_label( ood_y_d2,prob_noisy_ood2,cfg.delta )
+                    sec_loss_ood2 = kl_div(ood_flat_d2, F.softmax(prob_class_ood2)).mean()
 
-                    if id_index_1.size(0)==0:
-                        loss2 = cfg.alpha * sec_loss_clean2 + (1 - cfg.alpha) * (first_loss_clean2 + cfg.beta * sec_loss_ood2)+ cfg.gamma * first_loss_ood2
 
-                    elif pred_ood_index1.size(0)==0:
-                         loss2 = cfg.alpha * sec_loss_clean2 + (1 - cfg.alpha) * (first_loss_clean2 + cfg.beta * loss_id2)+cfg.gamma * first_loss_ood2
-                    else:
-                        loss2 = cfg.alpha*sec_loss_clean2 +(1-cfg.alpha)*(first_loss_clean2 +cfg.beta*sec_loss_ood2+  cfg.beta*loss_id2    )+ cfg.gamma * first_loss_ood2
+                    prob_class_ood1 = output1['prob'][pred_ood_index2]
+                    ood_y_d1 = y_d1[pred_ood_index2]
+                    ood_flat_d1= flat_label( ood_y_d1,prob_noisy_ood1,cfg.delta )
+                    sec_loss_ood1 = kl_div(ood_flat_d1, F.softmax(prob_class_ood1)).mean()
 
-                    if id_index_2.size(0) == 0:
-                        loss1 = cfg.alpha*sec_loss_clean1 +(1-cfg.alpha)*(first_loss_clean1 +cfg.beta*sec_loss_ood1 )\
-                                + cfg.gamma * first_loss_ood1
 
-                    elif pred_ood_index2.size(0) == 0:
-                        loss1 = cfg.alpha * sec_loss_clean1 + (1 - cfg.alpha) * ( first_loss_clean1  + cfg.beta * loss_id1)\
-                                + cfg.gamma * first_loss_ood1
-                    else:
-                        loss1 = cfg.alpha*sec_loss_clean1 +(1-cfg.alpha)*(first_loss_clean1 +cfg.beta*sec_loss_ood1 +  cfg.beta*loss_id1)\
+                    loss2 = cfg.alpha*sec_loss_clean2 +(1-cfg.alpha)*(first_loss_clean2 +cfg.beta*sec_loss_ood2+  cfg.beta*loss_id2    )+ cfg.gamma * first_loss_ood2
+
+
+                    loss1 = cfg.alpha*sec_loss_clean1 +(1-cfg.alpha)*(first_loss_clean1 +cfg.beta*sec_loss_ood1 +  cfg.beta*loss_id1)\
                                 + cfg.gamma * first_loss_ood1
 
 
